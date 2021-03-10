@@ -4,195 +4,29 @@ title: Release Notes
 sidebar_label: Release Notes
 ---
 
-# Release Notes
+# Release notes
 
-## v0.9.0
+## v0.8.1
 
-**Release date**：2020-5-15
+**Release date**：2020-6-22
 
 #### Compatibility
 
 | Milvus version | Python SDK version | Java SDK version | Go SDK version |
-| -------------- | ------------------ | ---------------- | -------------- |
-| 0.9.0          | 0.2.11             | 0.8.0            | 0.4.0          |
-
-#### New features
+| :------------- | :----------------- | :--------------- | :------------- |
+| 0.8.1          | 0.2.10           | 0.7.0         | 0.3.0       |
 
 
-- Checks the CPU instruction set, GPU driver version, and CUDA version, when Milvus starts up. [#2054](https://github.com/milvus-io/milvus/issues/2054) [#2111](https://github.com/milvus-io/milvus/issues/2111)
-- Prevents multiple Milvus instances from accessing the same Milvus database at the same time. [#2059](https://github.com/milvus-io/milvus/issues/2059)
-- Supports log file rotating. [#2206](https://github.com/milvus-io/milvus/issues/2206)
-- Suspends index building when a search request comes in. [#2283](https://github.com/milvus-io/milvus/issues/2283)
-
-#### Improvements
-
-- Refactors log output. [#221](https://github.com/milvus-io/milvus/issues/221)
-- Upgrades OpenBLAS to improve Milvus' performance. [#1796](https://github.com/milvus-io/milvus/issues/1796)
-- Unifies the vector distance calculation algorithms among FAISS, NSG, HNSW, and ANNOY. [#1965](https://github.com/milvus-io/milvus/issues/1965)
-- Supports SSE4.2 instruction set. [#2039](https://github.com/milvus-io/milvus/issues/2039)
-- Refactors the configuration files. [#2149](https://github.com/milvus-io/milvus/issues/2149) [#2167](https://github.com/milvus-io/milvus/issues/2167)
-- Uses Elkan K-means algorithm to improve the IVF index performance. [#2178](https://github.com/milvus-io/milvus/issues/2178)
 
 #### Fixed issues
 
-> See [CHANGELOG](https://github.com/milvus-io/milvus/blob/master/CHANGELOG.md) for more information.
-
-#### API changes
-
-##### Added methods
-
-
-
-| C++            | Python             | Java                 | Go |
-| -------------- | ------------------ | -------------------- | ------------------------ |
-| `HasPartition`   |`has_partition`|`hasPartition`|`HasPartition`|
-
-##### Changed methods
-
-
-
-|               | C++            | Python             | Java                 | Go |
-| -------------- | -------------- | ------------------ | -------------------- | ------------------------ |
-| Earlier than v0.9.0 | `DescribeCollection` |`describe_collection`|`describeCollection`|`DescribeCollection`|
-| v0.9.0 | `GetCollectionInfo` |`get_collection_info`|`getCollectionInfo`|`GetCollectionInfo`|
-
-
-
-|                     | C++               | Python             | Java                    | Go                |
-| ------------------- | ----------------- | ------------------ | ----------------------- | ----------------- |
-| Earlier than v0.9.0 | `CountCollection` | `count_collection` | `getCollectionRowCount` | `CountCollection` |
-| v0.9.0              | `CountEntities`   | `count_entities`   | `countEntities`         | `CountEntities`   |
-
-
-
-
-
-|                     | C++               | Python             | Java              | Go                |
-| ------------------- | ----------------- | ------------------ | ----------------- | ----------------- |
-| Earlier than v0.9.0 | `ShowCollections` | `show_collections` | `showCollections` | `ShowCollections` |
-| v0.9.0              | `ListCollections` | `list_collections` | `listCollections` | `ListCollections` |
-
-
-
-
-
-|                     | C++                  | Python                 | Java                 | Go                   |
-| ------------------- | -------------------- | ---------------------- | -------------------- | -------------------- |
-| Earlier than v0.9.0 | `ShowCollectionInfo` | `collection_info`      | `showCollectionInfo` | `ShowCollectionInfo` |
-| v0.9.0              | `GetCollectionStats` | `get_collection_stats` | `getCollectionStats` | `GetCollectionStats` |
-
-
-
-
-
-|                     | C++             | Python           | Java            | Go              |
-| ------------------- | --------------- | ---------------- | --------------- | --------------- |
-| Earlier than v0.9.0 | `DescribeIndex` | `describe_index` | `describeIndex` | `DescribeIndex` |
-| v0.9.0              | `GetIndexInfo`  | `get_index_info` | `getIndexInfo`  | `GetIndexInfo`  |
-
-
-
-
-
-|                     | C++              | Python            | Java             | Go               |
-| ------------------- | ---------------- | ----------------- | ---------------- | ---------------- |
-| Earlier than v0.9.0 | `ShowPartitions` | `show_partitions` | `showPartitions` | `ShowPartitions` |
-| v0.9.0              | `ListPartitions` | `list_partitions` | `listPartitions` | `ListPartitions` |
-
-
-
-|                     | C++               | Python               | Java              | Go               |
-| ------------------- | ----------------- | -------------------- | ----------------- | ---------------- |
-| Earlier than v0.9.0 | `GetEntitiesByID` | `get_vectors_by_ids` | `getVectorsByIds` | `GetVectorsByID` |
-| v0.9.0              | `GetEntityByID`   | `get_entity_by_id`   | `getEntityByID`   | `GetEntityByID`  |
-
-
-
-
-
-|                     | C++               | Python               | Java              | Go                |
-| ------------------- | ----------------- | -------------------- | ----------------- | ----------------- |
-| Earlier than v0.9.0 | `GetIDsInSegment` | `get_vector_ids`     | `getVectorIds`    | `GetEntityIDs`    |
-| v0.9.0              | `ListIDInSegment` | `list_id_in_segment` | `listIDInSegment` | `ListIDInSegment` |
-
-
-
-|                     | C++   | Python              | Java            | Go    |
-| ------------------- | ----- | ------------------- | --------------- | ----- |
-| Earlier than v0.9.0 | *N/A* | `search_in_files`   | `searchInFiles` | *N/A* |
-| v0.9.0              | *N/A* | `search_in_segment` | *DELETED*       | *N/A* |
-
-
-
-
-
-|                     | C++                | Python                | Java               | Go                 |
-| ------------------- | ------------------ | --------------------- | ------------------ | ------------------ |
-| Earlier than v0.9.0 | `DeleteByID`       | `delete_by_id`        | `deleteByIds`      | `DeleteByID`       |
-| v0.9.0              | `DeleteEntityByID` | `delete_entity_by_id` | `deleteEntityByID` | `DeleteEntityByID` |
-
-
-
-
-
-|                     | C++                 | Python               | Java                | Go                  |
-| ------------------- | ------------------- | -------------------- | ------------------- | ------------------- |
-| Earlier than v0.9.0 | `PreloadCollection` | `preload_collection` | `preloadCollection` | `PreloadCollection` |
-| v0.9.0              | `LoadCollection`    | `load_collection`    | `loadCollection`    | `LoadCollection`    |
-
-
-
-
-
-|                     | C++                           | Python      | Java                     | Go          |
-| ------------------- | ----------------------------- | ----------- | ------------------------ | ----------- |
-| Earlier than v0.9.0 | `FlushCollection` and `Flush` | `flush`     | `flush` and `flushAsync` | `Flush`     |
-| v0.9.0              | `Flush`                       | *UNCHANGED* | *UNCHANGED*              | *UNCHANGED* |
-
-
-
-
-
-|                     | C++                               | Python      | Java                         | Go          |
-| ------------------- | --------------------------------- | ----------- | ---------------------------- | ----------- |
-| Earlier than v0.9.0 | `CompactCollection` and `Compact` | `compact`   | `compact` and `compactAsync` | `Compact`   |
-| v0.9.0              | `Compact`                         | *UNCHANGED* | *UNCHANGED*                  | *UNCHANGED* |
-
-
-
-
-
-|                     | C++         | Python    | Java        | Go          |
-| ------------------- | ----------- | --------- | ----------- | ----------- |
-| Earlier than v0.9.0 | `Connect`   | `connect` | `connect`   | `Connect`   |
-| v0.9.0              | *UNCHANGED* | *DELETED* | *UNCHANGED* | *UNCHANGED* |
-
-
-
-
-
-|                     | C++         | Python      | Java          | Go            |
-| ------------------- | ----------- | ----------- | ------------- | ------------- |
-| Earlier than v0.9.0 | `Connected` | `connected` | `isConnected` | `IsConnected` |
-| v0.9.0              | *UNCHANGED* | *DELETED*   | *UNCHANGED*   | *UNCHANGED*   |
-
-
-
-
-
-|                     | C++          | Python       | Java         | Go           |
-| ------------------- | ------------ | ------------ | ------------ | ------------ |
-| Earlier than v0.9.0 | `Disconnect` | `disconnect` | `disconnect` | `Disconnect` |
-| v0.9.0              | *UNCHANGED*  | *DELETED*    | *UNCHANGED*  | *UNCHANGED*  |
-
-
-
-
-
-
-
-
-
+- Index files are missing after a compact operation. [#1997](https://github.com/milvus-io/milvus/issues/1997)
+- Too many files are opened when `metric_config.enable_monitor` is set to `true`. [#2264](https://github.com/milvus-io/milvus/issues/2264)
+- The server hangs when multiple clients query different collections at the same time. [#2266](https://github.com/milvus-io/milvus/issues/2266)
+- `nlist` set by the user may not take effect. [#2399](https://github.com/milvus-io/milvus/issues/2399)
+- Deleted vectors are still found in GPU-enabled Milvus. [#2450](https://github.com/milvus-io/milvus/issues/2450)
+
+> See [CHANGELOG](https://github.com/milvus-io/milvus/blob/0.8.1/CHANGELOG.md) for more information.
 
 
 

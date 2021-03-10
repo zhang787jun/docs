@@ -6,187 +6,25 @@ sidebar_label: 发版说明
 
 # 发版说明
 
-## v0.9.0
+## v0.8.1
 
-**发布时间**：2020-5-15
+**发布时间**：2020-6-22
 
 #### 版本兼容
 
 | Milvus 版本 | Python SDK 版本 | Java SDK 版本 | Go SDK 版本 |
-| -------------- | ------------------ | ---------------- | -------------- |
-| 0.9.0          | 0.2.11             | 0.8.0            | 0.4.0          |
-
-#### 新增功能
-
-
-- 支持在 Milvus 启动时检查 CPU 指令集、GPU 驱动版本 和 CUDA 版本。 [#2054](https://github.com/milvus-io/milvus/issues/2054) [#2111](https://github.com/milvus-io/milvus/issues/2111)
-- 避免多个 Milvus 实例同时操作同一 Milvus 数据。 [#2059](https://github.com/milvus-io/milvus/issues/2059)
-- 支持日志文件轮转。 [#2206](https://github.com/milvus-io/milvus/issues/2206)
-- 处理搜索请求时暂停创建索引。[#2283](https://github.com/milvus-io/milvus/issues/2283)
-
-#### 主要改进
-
-- 重构了日志输出。 [#221](https://github.com/milvus-io/milvus/issues/221)
-- 升级了 OpenBLAS 版本以提高 Milvus 性能。 [#1796](https://github.com/milvus-io/milvus/issues/1796)
-- 统一了 FAISS、NSG、HNSW 和 ANNOY 的向量距离计算方法。[#1965](https://github.com/milvus-io/milvus/issues/1965)
-- 支持 SSE4.2 指令集。 [#2039](https://github.com/milvus-io/milvus/issues/2039)
-- 重构了配置文件。 [#2149](https://github.com/milvus-io/milvus/issues/2149) [#2167](https://github.com/milvus-io/milvus/issues/2167)
-- 采用了 Elkan K-means 算法提高 IVF 索引性能。 [#2178](https://github.com/milvus-io/milvus/issues/2178)
+| :------------- | :----------------- | :--------------- | :------------- |
+| 0.8.1          | 0.2.10           | 0.7.0         | 0.3.0        |
 
 #### 问题修复
 
-> 详见 [CHANGELOG](https://github.com/milvus-io/milvus/blob/master/CHANGELOG.md) 了解更多已修复问题。
-
-#### API 变更
-
-##### 新增方法
-
-
-
-| C++            | Python          | Java           | Go             |
-| -------------- | --------------- | -------------- | -------------- |
-| `HasPartition` | `has_partition` | `hasPartition` | `HasPartition` |
-
-##### 变更方法
-
-
-
-|                     | C++                  | Python                | Java                 | Go                   |
-| ------------------- | -------------------- | --------------------- | -------------------- | -------------------- |
-| v0.9.0 之前版本 | `DescribeCollection` | `describe_collection` | `describeCollection` | `DescribeCollection` |
-| v0.9.0              | `GetCollectionInfo`  | `get_collection_info` | `getCollectionInfo`  | `GetCollectionInfo`  |
-
-
-
-|                     | C++               | Python             | Java                    | Go                |
-| ------------------- | ----------------- | ------------------ | ----------------------- | ----------------- |
-| v0.9.0 之前版本 | `CountCollection` | `count_collection` | `getCollectionRowCount` | `CountCollection` |
-| v0.9.0              | `CountEntities`   | `count_entities`   | `countEntities`         | `CountEntities`   |
-
-
-
-
-
-|                     | C++               | Python             | Java              | Go                |
-| ------------------- | ----------------- | ------------------ | ----------------- | ----------------- |
-| v0.9.0 之前版本 | `ShowCollections` | `show_collections` | `showCollections` | `ShowCollections` |
-| v0.9.0              | `ListCollections` | `list_collections` | `listCollections` | `ListCollections` |
-
-
-
-
-
-|                     | C++                  | Python                 | Java                 | Go                   |
-| ------------------- | -------------------- | ---------------------- | -------------------- | -------------------- |
-| v0.9.0 之前版本 | `ShowCollectionInfo` | `collection_info`      | `showCollectionInfo` | `ShowCollectionInfo` |
-| v0.9.0              | `GetCollectionStats` | `get_collection_stats` | `getCollectionStats` | `GetCollectionStats` |
-
-
-
-
-
-|                     | C++             | Python           | Java            | Go              |
-| ------------------- | --------------- | ---------------- | --------------- | --------------- |
-| v0.9.0 之前版本 | `DescribeIndex` | `describe_index` | `describeIndex` | `DescribeIndex` |
-| v0.9.0              | `GetIndexInfo`  | `get_index_info` | `getIndexInfo`  | `GetIndexInfo`  |
-
-
-
-
-
-|                     | C++              | Python            | Java             | Go               |
-| ------------------- | ---------------- | ----------------- | ---------------- | ---------------- |
-| v0.9.0 之前版本 | `ShowPartitions` | `show_partitions` | `showPartitions` | `ShowPartitions` |
-| v0.9.0              | `ListPartitions` | `list_partitions` | `listPartitions` | `ListPartitions` |
-
-
-
-|                     | C++               | Python               | Java              | Go               |
-| ------------------- | ----------------- | -------------------- | ----------------- | ---------------- |
-| v0.9.0 之前版本 | `GetEntitiesByID` | `get_vectors_by_ids` | `getVectorsByIds` | `GetVectorsByID` |
-| v0.9.0              | `GetEntityByID`   | `get_entity_by_id`   | `getEntityByID`   | `GetEntityByID`  |
-
-
-
-
-
-|                     | C++               | Python               | Java              | Go                |
-| ------------------- | ----------------- | -------------------- | ----------------- | ----------------- |
-| v0.9.0 之前版本 | `GetIDsInSegment` | `get_vector_ids`     | `getVectorIds`    | `GetEntityIDs`    |
-| v0.9.0              | `ListIDInSegment` | `list_id_in_segment` | `listIDInSegment` | `ListIDInSegment` |
-
-
-
-|                     | C++   | Python              | Java            | Go    |
-| ------------------- | ----- | ------------------- | --------------- | ----- |
-| v0.9.0 之前版本 | *N/A* | `search_in_files`   | `searchInFiles` | *N/A* |
-| v0.9.0              | *N/A* | `search_in_segment` | *DELETED*       | *N/A* |
-
-
-
-
-
-|                     | C++                | Python                | Java               | Go                 |
-| ------------------- | ------------------ | --------------------- | ------------------ | ------------------ |
-| v0.9.0 之前版本 | `DeleteByID`       | `delete_by_id`        | `deleteByIds`      | `DeleteByID`       |
-| v0.9.0              | `DeleteEntityByID` | `delete_entity_by_id` | `deleteEntityByID` | `DeleteEntityByID` |
-
-
-
-
-
-|                     | C++                 | Python               | Java                | Go                  |
-| ------------------- | ------------------- | -------------------- | ------------------- | ------------------- |
-| v0.9.0 之前版本 | `PreloadCollection` | `preload_collection` | `preloadCollection` | `PreloadCollection` |
-| v0.9.0              | `LoadCollection`    | `load_collection`    | `loadCollection`    | `LoadCollection`    |
-
-
-
-
-
-|                     | C++                           | Python      | Java                     | Go          |
-| ------------------- | ----------------------------- | ----------- | ------------------------ | ----------- |
-| v0.9.0 之前版本 | `FlushCollection` 和 `Flush` | `flush`     | `flush` 和 `flushAsync` | `Flush`     |
-| v0.9.0              | `Flush`                       | *不变* | *不变*              | *不变* |
-
-
-
-
-
-|                     | C++                               | Python      | Java                         | Go          |
-| ------------------- | --------------------------------- | ----------- | ---------------------------- | ----------- |
-| v0.9.0 之前版本 | `CompactCollection` 和 `Compact` | `compact`   | `compact` 和 `compactAsync` | `Compact`   |
-| v0.9.0              | `Compact`                         | *不变* | *不变*              | *不变* |
-
-
-
-
-
-|                     | C++         | Python    | Java        | Go          |
-| ------------------- | ----------- | --------- | ----------- | ----------- |
-| v0.9.0 之前版本 | `Connect`   | `connect` | `connect`   | `Connect`   |
-| v0.9.0              | *不变* | *删除* | *不变* | *不变* |
-
-
-
-
-
-|                     | C++         | Python      | Java          | Go            |
-| ------------------- | ----------- | ----------- | ------------- | ------------- |
-| v0.9.0 之前版本 | `Connected` | `connected` | `isConnected` | `IsConnected` |
-| v0.9.0              | *不变* | *删除* | *不变* | *不变* |
-
-
-
-
-
-|                     | C++          | Python       | Java         | Go           |
-| ------------------- | ------------ | ------------ | ------------ | ------------ |
-| v0.9.0 之前版本 | `Disconnect` | `disconnect` | `disconnect` | `Disconnect` |
-| v0.9.0              | *不变* | *删除*    | *不变* | *不变* |
-
-
-
+- 进行一次 compact 操作后索引文件丢失。 [#1997](https://github.com/milvus-io/milvus/issues/1997)
+- `metric_config.enable_monitor` 设为 `true` 后过多句柄文件被打开。 [#2264](https://github.com/milvus-io/milvus/issues/2264)
+- 当多个客户端同事查询不同的表时服务器死机。 [#2266](https://github.com/milvus-io/milvus/issues/2266)
+- 用户设置的 `nlist` 不一定生效。 [#2399](https://github.com/milvus-io/milvus/issues/2399)
+- 向量删除后依然会被 GPU 版 Milvus 找到。 [#2450](https://github.com/milvus-io/milvus/issues/2450)
+
+> 详见 [CHANGELOG](https://github.com/milvus-io/milvus/blob/0.8.1/CHANGELOG.md) 了解更多已修复问题。
 
 
 
@@ -266,7 +104,7 @@ sidebar_label: 发版说明
 
 - **向量删除**
 
-  新增了对单条或多条向量的删除功能。如果您对一个集合进行了向量删除操作，后续对这个集合的搜索操作仅支持一部分索引类型，包括在 CPU 上运行的 Flat、IVFlat、IVFSQ8 等。Milvus 的后续版本将为其他索引类型提供支持。[#861](https://github.com/milvus-io/milvus/issues/861)
+  新增了对单条或多条向量的删除功能。如果你对一个集合进行了向量删除操作，后续对这个集合的搜索操作仅支持一部分索引类型，包括在 CPU 上运行的 Flat、IVFlat、IVFSQ8 等。Milvus 的后续版本将为其他索引类型提供支持。[#861](https://github.com/milvus-io/milvus/issues/861)
 
 - **向量读取**
 
@@ -274,15 +112,15 @@ sidebar_label: 发版说明
 
 - **数据落盘与压缩**
 
-  新增了数据落盘与压缩功能。您可以设置定时落盘或者手动落盘，从而避免数据丢失。如果一个段中的向量数据被删除，被删除的向量数据占据的空间并不会自动释放。您可以对集合中的段进行压缩操作以释放多余空间。[#861](https://github.com/milvus-io/milvus/issues/861) [#1426](https://github.com/milvus-io/milvus/pull/1426)
+  新增了数据落盘与压缩功能。你可以设置定时落盘或者手动落盘，从而避免数据丢失。如果一个段中的向量数据被删除，被删除的向量数据占据的空间并不会自动释放。你可以对集合中的段进行压缩操作以释放多余空间。[#861](https://github.com/milvus-io/milvus/issues/861) [#1426](https://github.com/milvus-io/milvus/pull/1426)
 
 - **运行时更改 Milvus 服务端参数**
 
-  新增了运行时更改 Milvus 服务端参数的功能。您可以通过 Milvus 客户端对 Milvus 服务端参数进行更改，部分参数更改后可即时生效，无需重启 Milvus。[#665](https://github.com/milvus-io/milvus/issues/665)
+  新增了运行时更改 Milvus 服务端参数的功能。你可以通过 Milvus 客户端对 Milvus 服务端参数进行更改，部分参数更改后可即时生效，无需重启 Milvus。[#665](https://github.com/milvus-io/milvus/issues/665)
 
 - **预写式日志(Write-Ahead Logging, WAL)**
 
-  新增了 WAL 功能，可以大大提高数据操作的可靠性。您可以在 Milvus 服务端配置文件（`server_config.yaml`）中对 WAL 进行设置。[#830](https://github.com/milvus-io/milvus/issues/830)
+  新增了 WAL 功能，可以大大提高数据操作的可靠性。你可以在 Milvus 服务端配置文件（`server_config.yaml`）中对 WAL 进行设置。[#830](https://github.com/milvus-io/milvus/issues/830)
 
 - **RESTful API**
 
@@ -372,7 +210,7 @@ sidebar_label: 发版说明
 
 - **多张 GPU 创建索引**
 
-  支持使用多张 GPU 来创建索引以减少创建索引和整体查询的时间。您可以通过对 Milvus 配置文件中的参数 `build_index_resources` 来指定用于创建索引的 GPU 卡。[#414](https://github.com/milvus-io/milvus/pull/414)
+  支持使用多张 GPU 来创建索引以减少创建索引和整体查询的时间。你可以通过对 Milvus 配置文件中的参数 `build_index_resources` 来指定用于创建索引的 GPU 卡。[#414](https://github.com/milvus-io/milvus/pull/414)
 
 #### Bug 修复
 
@@ -500,7 +338,7 @@ sidebar_label: 发版说明
 
 - 当磁盘空间不足时，可通过参数“db_slave_path"添加多个二级数据存储文件路径。
 - 通过参数"parallel_reduce"启用多线程向量归并。
-- 通过参数”insert_buffer_size"，您可以指定内存中的一部分作为数据插入的缓冲区。
+- 通过参数”insert_buffer_size"，你可以指定内存中的一部分作为数据插入的缓冲区。
 - 当缓存已满时，通过参数“cache_free_percent"来设置有多少数据将被保留。
 - 通过参数”insert_cache_immediately"来启用一边插一边查的功能。
 - 将原先以分数来评价搜索结果，改成对应的向量距离评价搜索结果。
